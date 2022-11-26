@@ -5,6 +5,7 @@ import "./styles.css";
 export default function App() {
   const [input, setInput] = useState("");
   const [lista, setLista] = useState([]);
+  const [id, setId] = useState(0)
 
   const handleInput = (e) => {
     setInput(e.target.value);
@@ -12,14 +13,16 @@ export default function App() {
 
   const handleAdicionarClick = () => {
     if(input.length > 0) {
-      setLista([...lista, { id: Math.floor(Math.random()*65536), titulo: input }]);
+      setLista([...lista, { id: id, titulo: input }]);
       setInput("");
+      setId(id+1);
     }
   };
   const handleAdicionarEnter = (e) => {
     if (e.key === "Enter" && input.length > 0) {
-      setLista([...lista, { id: Math.floor(Math.random()*65536), titulo: input }]);
+      setLista([...lista, { id: id, titulo: input }]);
       setInput("");
+      setId(id+1)
     }
   };
 
@@ -56,8 +59,8 @@ export default function App() {
         </div>
         <div className="lista">
           { lista.length > 0? lista.map(li => (
-            <Checklist onHandleExcluir={handleExcluir} key={li.id} input={li.titulo} />
-          )): <h4>SEM AFAZERES</h4>}
+            <Checklist onHandleExcluir={() => handleExcluir(li.id)} key={li.id} input={li.titulo} />
+          )): <h4>SEM TAREFAS!</h4>}
         </div>
       </div>
     </div>

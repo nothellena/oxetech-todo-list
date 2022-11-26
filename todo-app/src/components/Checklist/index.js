@@ -6,13 +6,19 @@ import "./styles.css";
 export default function Check(props) {
   const [check, setCheck] = useState(false);
 
-  
+  const handleCheck = () => {
+    setCheck(!check)
+  }
+
 
   return (
     <div className="check">
-      <input type="checkbox" name="check" />
-      <h4 key={props.key} >{props.input}</h4>
+      <label key={props.key}>
+        <input type="checkbox" checked={check} onClick={handleCheck} />
+        <span>{props.input}</span>
+      </label>
       <img src="/assets/lixeira.svg" alt="excluir" onClick={props.onHandleExcluir} />
     </div>
   );
 }
+
