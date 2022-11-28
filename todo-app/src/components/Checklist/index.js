@@ -3,11 +3,13 @@ import api from "../../services/api";
 import "./styles.css";
 
 export default function Check(props) {
-  const [check, setCheck] = useState(false);
+  const [check, setCheck] = useState(props.status === "1");
 
   const handleCheck = () => {
     const data = new FormData();
     data.append("status", check ? 0 : 1);
+    data.append("titulo", props.input);
+    data.append("id_tarefa", props.id);
 
     api.put(`/tarefas/${props.id}/atualizar`, data)
       .then((res) => {

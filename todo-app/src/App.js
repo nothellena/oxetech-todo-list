@@ -6,7 +6,7 @@ import "./styles.css";
 export default function App() {
   const [input, setInput] = useState("");
   const [lista, setLista] = useState([]);
-  const [id_tarefa, setId_tarefa] = useState(null);
+  const [id_tarefa, setId_tarefa] = useState(0);
 
   useEffect(() => {
     api
@@ -104,6 +104,7 @@ export default function App() {
                 onHandleExcluir={() => handleExcluir(li.id_tarefa)}
                 id={li.id_tarefa}
                 input={li.titulo}
+                status={li.status}
               />
             ))
           ) : (
