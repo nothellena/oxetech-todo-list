@@ -7,7 +7,7 @@
 Crie um arquivo *.env* especificando o endereço da API, como no exemplo abaixo.
 
 ```
-API_URL=http://localhost:5000
+REACT_APP_API_URL=http://localhost:5000
 ```
 
 Caso a API esteja escutando em um endereço diferente, substitua `http://localhost:5000` pelo endereço adequado.
