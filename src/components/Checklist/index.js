@@ -10,11 +10,11 @@ export default function Check(props) {
     data.append("status", check ? 0 : 1);
     data.append("titulo", props.input);
     data.append("id_tarefa", props.id);
-
+    console.log(props.id)
     api.put(`/tarefas/${props.id}/atualizar`, data)
       .then((res) => {
         setCheck(!check);
-        console.log(res);
+        console.log(res.data.resposta);
       })
       .catch((erro) => console.log(erro.message));
   };

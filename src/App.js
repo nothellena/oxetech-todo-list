@@ -6,7 +6,6 @@ import "./styles.css";
 export default function App() {
   const [input, setInput] = useState("");
   const [lista, setLista] = useState([]);
-  const [id_tarefa, setId_tarefa] = useState(0);
 
   useEffect(() => {
     api
@@ -15,27 +14,23 @@ export default function App() {
         setLista(JSON.parse(res.data.replace(/'/g, '"')));
       })
       .catch((erro) => console.log(erro.message));
-  }, []);
+  });
 
   const handleInput = (e) => {
     setInput(e.target.value);
   };
 
   const handleAdicionarClick = () => {
-
     if (input.length > 0) {
       const data = new FormData();
-      data.append("id_tarefa", id_tarefa);
       data.append("titulo", input);
       data.append("status", 0);
 
-      api.post("/tarefas/cadastrar", data)
+      api
+        .post("/tarefas/cadastrar", data)
         .then((res) => {
-          setLista([...lista, { id_tarefa: id_tarefa, titulo: input }]);
           setInput("");
-          setId_tarefa(id_tarefa + 1);
-
-          console.log(res);
+          console.log(res.data.resposta);
         })
         .catch((erro) => console.log(erro.message));
     }
@@ -44,17 +39,14 @@ export default function App() {
   const handleAdicionarEnter = (e) => {
     if (e.key === "Enter" && input.length > 0) {
       const data = new FormData();
-      data.append("id_tarefa", id_tarefa);
       data.append("titulo", input);
       data.append("status", 0);
 
-      api.post("/tarefas/cadastrar", data)
+      api
+        .post("/tarefas/cadastrar", data)
         .then((res) => {
-          setLista([...lista, { id_tarefa: id_tarefa, titulo: input }]);
           setInput("");
-          setId_tarefa(id_tarefa + 1);
-
-          console.log(res);
+          console.log(res.data.resposta);
         })
         .catch((erro) => console.log(erro.message));
     }
@@ -64,7 +56,7 @@ export default function App() {
     api
       .delete(`/tarefas/${id_tarefa}/deletar`)
       .then((res) => {
-        console.log(res);
+        console.log(res.data.resposta);
         const remove = [...lista].filter(
           (todo) => todo.id_tarefa !== id_tarefa
         );
