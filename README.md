@@ -26,4 +26,4 @@ Execute o comando:
 npm start
 ```
 ## Link do protótipo 
-https://www.figma.com/file/vKYZ0Fo259BxYYlCL3MB8S/TODO-OXETECH?node-id=0%3A1&t=Wm4ULsxoth9MtsX4-1
+https://www.figma.com/file/vKYZ0Fo259BxYYlCL3MB8S/TODO-OXETECH?node-id=57%3A2&t=Bb8tsWqkoCV2Bjx3-1
